@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.5
 MAINTAINER "Mingcai SHEN <archsh@gmail.com>"
 
 RUN apk update && apk add tzdata \
