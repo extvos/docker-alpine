@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.12
 MAINTAINER "Mingcai SHEN <archsh@gmail.com>"
 
 RUN apk update && apk add --no-cache tzdata \
