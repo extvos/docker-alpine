@@ -15,7 +15,8 @@ RUN apk update --no-cache && apk add --no-cache tzdata runit \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" >  /etc/timezone \
     && apk del tzdata \
-    && apk add  --no-cache bash curl wget ca-certificates update-ca-certificates \
+    && apk add  --no-cache bash curl wget ca-certificates \
+    && update-ca-certificates \
     && mkdir -p ${SERVICE_AVAILABLE_DIR} ${SERVICE_ENABLED_DIR} \
     && chmod +x /opt/installer \
     && sync \
