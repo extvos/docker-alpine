@@ -24,4 +24,4 @@ RUN apk update --no-cache && apk add --no-cache tzdata runit \
     && rm -rf /var/cache/apk/* /opt/installer
 
 # Init
-ENTRYPOINT ["/sbin/runit-init"]
+# ENTRYPOINT ["/sbin/runit-init"]
