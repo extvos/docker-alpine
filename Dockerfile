@@ -4,7 +4,7 @@ MAINTAINER "Mingcai SHEN <archsh@gmail.com>"
 STOPSIGNAL SIGCONT
 
 ENV SERVICE_AVAILABLE_DIR=/etc/sv \
-    SERVICE_ENABLED_DIR=/service
+    SERVICE_ENABLED_DIR=/etc/service
 
 ENV SVDIR=${SERVICE_ENABLED_DIR} \
     SVWAIT=7
@@ -21,7 +21,12 @@ RUN apk update --no-cache && apk add --no-cache tzdata runit \
     && chmod +x /opt/installer \
     && sync \
     && /opt/installer \
-    && rm -rf /var/cache/apk/* /opt/installer
+    && rm -rf /var/cache/apk/* /opt/installer \
+    && sed -i 's/\/service/\/etc\/service/g'  \
+       /etc/runit/1 /etc/runit/2 /etc/runit/3 /etc/runit/ctrlaltdel.dist /etc/runit/reboot /etc/runit/stopit
+
+VOLUME /etc/sv
+VOLUME /etc/service
 
 # Init
-# ENTRYPOINT ["/sbin/runit-init"]
+ENTRYPOINT ["/sbin/runit-init"]
