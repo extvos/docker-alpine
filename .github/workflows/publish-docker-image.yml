@@ -17,7 +17,7 @@ jobs:
       run: docker build . --file Dockerfile --tag extvos/alpine:latest
 
     - name: Login to Docker Hub
-      run: docker login -u ${{ secret.DOCKER_HUB_USER }} -p ${{ secret.DOCKER_HUB_TOKEN }}
+      run: docker login -u ${{ DOCKER_HUB_USER }} -p ${{ DOCKER_HUB_TOKEN }}
 
     - name: Push to Docker Hub
       run: docker push extvos/alpine:latest
